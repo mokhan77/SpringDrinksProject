@@ -4,14 +4,14 @@ import java.util.List;
 
 public interface ServiceMethods<T> {
 
-	T create(T t); // Creates
+	T create(T t); // Create
 
-	List<T> getAll(); // Reads all
+	List<T> getAll(); // Read all
 
-	T getById(long id); // Reads by id
+	T getById(long id); // Read by id
 
-	T update(long id, T t); // Updates
+	T update(long id, T t); // Update
 
-	boolean delete(long id); // Deletes
+	boolean delete(long id); // Delete
 
 }
