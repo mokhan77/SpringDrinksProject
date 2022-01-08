@@ -76,18 +76,17 @@ public class Drink {
 	public void setTaste(long taste) {
 		this.taste = taste;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (taste ^ (taste >>> 32));
 		result = prime * result + ((colour == null) ? 0 : colour.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + (int) (taste ^ (taste >>> 32));
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -97,22 +96,20 @@ public class Drink {
 		if (getClass() != obj.getClass())
 			return false;
 		Drink other = (Drink) obj;
-		if (taste != other.taste)
-			return false;
 		if (colour == null) {
 			if (other.colour != null)
 				return false;
 		} else if (!colour.equals(other.colour))
-			return false;
-		if (id != other.id)
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (taste != other.taste)
+			return false;
 		return true;
 	}
 	
-	
+
 }
