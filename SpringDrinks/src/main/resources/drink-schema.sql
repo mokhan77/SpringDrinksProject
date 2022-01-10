@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS drink CASCADE;
 CREATE TABLE `drink` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `taste` bigint DEFAULT NULL,

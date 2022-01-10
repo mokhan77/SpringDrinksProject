@@ -1,8 +1,12 @@
 package com.qa.SpringDrinks.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -38,27 +42,36 @@ public class DrinkControllerUnitTest {
 
 		Mockito.when(this.service.create(entry)).thenReturn(entry);
 
-		mvc.perform(post("/drink/create")
-		.contentType(MediaType.APPLICATION_JSON)
-		.content(entryAsJSON))
-		.andExpect(status().isCreated())
-		.andExpect(content().json(entryAsJSON));
+		mvc.perform(post("/drink/create").contentType(MediaType.APPLICATION_JSON).content(entryAsJSON))
+				.andExpect(status().isCreated()).andExpect(content().json(entryAsJSON));
 	}
-	
+
 	@Test
-	public void getByIdTest() {
-		
+	public void getByIdTest() throws Exception {
+
 	}
+
 	@Test
-	public void getAllTest() {
-		
+	public void getAllTest() throws Exception {
+		Drink entry = new Drink("Fanta", "Orange", 7);
+
+		List<Drink> newDrink = new ArrayList<>();
+		newDrink.add(entry);
+		String newDrinkAsJSON = this.mapper.writeValueAsString(newDrink);
+
+		Mockito.when(this.service.getAll()).thenReturn(newDrink);
+
+		mvc.perform(get("/drink/getAll").contentType(MediaType.APPLICATION_JSON).content(newDrinkAsJSON))
+				.andExpect(status().isOk()).andExpect(content().json(newDrinkAsJSON));
 	}
+
 	@Test
-	public void updateTest() {
-		
+	public void updateTest() throws Exception {
+
 	}
+
 	@Test
-	public void deleteTest() {
-		
+	public void deleteTest() throws Exception {
+
 	}
 }

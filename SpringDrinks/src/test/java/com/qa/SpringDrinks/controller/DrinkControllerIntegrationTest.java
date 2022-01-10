@@ -19,8 +19,8 @@ import com.qa.SpringDrinks.domain.Drink;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@Sql(scripts = { "classpath:drink-schema.sql",
-		"classpath:drink-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:drink-schema.sql", "classpath:drink-data.sql" },
+executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
 
 public class DrinkControllerIntegrationTest {
@@ -34,13 +34,16 @@ public class DrinkControllerIntegrationTest {
 	@Test
 	public void createTest() throws Exception {
 		Drink entry = new Drink("Tea", "Brown", 6);
-		Drink result = new Drink(2L, "Tea", "Brown", 6);
+		Drink result = new Drink(2, "Tea", "Brown", 6);
 
 		String entryAsJSON = this.mapper.writeValueAsString(entry);
 		String resultAsJSON = this.mapper.writeValueAsString(result);
 
-		mvc.perform(post("/drink/create").contentType(MediaType.APPLICATION_JSON).content(entryAsJSON))
-				.andExpect(status().isCreated()).andExpect(content().json(resultAsJSON));
+		mvc.perform(post("/drink/create")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(entryAsJSON))
+				.andExpect(status().isCreated())
+				.andExpect(content().json(resultAsJSON));
 	}
 
 }
