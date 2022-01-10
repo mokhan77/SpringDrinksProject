@@ -41,9 +41,9 @@ public class DrinkService implements ServiceMethods<Drink> {
 		Optional<Drink> existingDrink = this.repo.findById(id);
 		if (existingDrink.isPresent()) {
 			Drink existing = existingDrink.get();
-			existing.setTaste(drink.getTaste());
 			existing.setName(drink.getName());
 			existing.setColour(drink.getColour());
+			existing.setTaste(drink.getTaste());
 
 			return this.repo.saveAndFlush(existing);
 		}
@@ -58,4 +58,3 @@ public class DrinkService implements ServiceMethods<Drink> {
 	}
 
 }
-
