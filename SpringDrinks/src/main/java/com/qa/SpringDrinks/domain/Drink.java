@@ -110,6 +110,5 @@ public class Drink {
 			return false;
 		return true;
 	}
-	
 
 }

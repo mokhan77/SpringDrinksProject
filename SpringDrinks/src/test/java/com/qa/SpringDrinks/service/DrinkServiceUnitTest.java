@@ -26,7 +26,7 @@ public class DrinkServiceUnitTest {
 
 	@Test
 	public void createTest() {
-		
+
 		Drink input = new Drink("Lemonade", "Yellow", 8);
 		Drink output = new Drink(1L, "Lemonade", "Yellow", 8);
 
@@ -39,7 +39,7 @@ public class DrinkServiceUnitTest {
 
 	@Test
 	public void getByIdTest() {
-		
+
 		Long id = 1L;
 		Drink expected = new Drink(id, "Lemonade", "Yellow", 8);
 
@@ -52,7 +52,7 @@ public class DrinkServiceUnitTest {
 
 	@Test
 	public void getAllTest() {
-		
+
 		Long id = 1L;
 		Drink testDrink = new Drink("Lemonade", "Yellow", 8);
 		testDrink.setId(id);
@@ -85,7 +85,7 @@ public class DrinkServiceUnitTest {
 
 	@Test
 	public void deleteTest() {
-		
+
 		Long id = 1L;
 		Mockito.when(this.repo.existsById(id)).thenReturn(false);
 
